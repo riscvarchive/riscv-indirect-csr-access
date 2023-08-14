@@ -1,15 +1,41 @@
 [[intro]]
 == Introduction
 
-Lorem ipsum indexterm:[Lorem ipsum] dolor sit amet, consectetur adipiscing elit, sed do *eiusmod tempor* incididunt ut labore et dolore magna aliqua. Felis imperdiet proin fermentum leo vel orci porta. Volutpat lacus laoreet non curabitur indexterm:[curabitur] gravida indexterm:[gravida]. Posuere urna nec tincidunt praesent semper feugiat nibh. Elit ``ullamcorper`` dignissim cras tincidunt lobortis. Malesuada fames ac turpis egestas integer eget. Tristique sollicitudin nibh sit amet commodo. Sed felis eget velit aliquet. Sit amet aliquam id diam maecenas ultricies mi. Consectetur purus ut faucibus pulvinar. Lectus urna duis convallis convallis tellus id. Fermentum iaculis eu non diam. Feugiat in fermentum posuere urna nec tincidunt praesent semper feugiat. Urna nec tincidunt praesent semper feugiat nibh.
+Smcsrind/Sscsrind is an ISA extension that extends the indirect CSR
+access mechanism originally defined as part of the
+https://github.com/riscv/riscv-aia[[.underline]#Smaia/Ssaia
+extensions#], in order to make it available for use by other extensions
+without creating an unnecessary dependence on Smaia/Ssaia.
 
-Commodo viverra maecenas accumsan lacus. Vulputate odio ut enim blandit indexterm:[blandit] volutpat maecenas volutpat blandit. Urna porttitor rhoncus dolor purus non. Tellus mauris a diam maecenas sed. Vitae auctor eu augue ut lectus. Ridiculus mus mauris vitae ultricies leo integer. Consequat semper viverra nam *libero* justo laoreet sit amet. Pellentesque pulvinar pellentesque habitant morbi tristique senectus et netus et. Ac placerat vestibulum lectus mauris ``ultrices`` eros in cursus turpis. Accumsan in nisl nisi scelerisque eu ultrices vitae. Cras ornare arcu dui vivamus. Vitae congue mauris rhoncus aenean. Consequat mauris nunc congue nisi vitae suscipit tellus. Tempus egestas sed sed risus pretium quam vulputate dignissim. Quis varius quam quisque id diam vel. Mattis nunc sed blandit libero volutpat sed cras ornare arcu. Amet mauris commodo quis imperdiet massa tincidunt nunc.
+This extension confers two benefits:
+
+
+. It provides a means to access an array of registers via CSRs without
+requiring allocation of large chunks of the limited CSR address space.
+
+. It enables software to access each of an array of registers by index,
+without requiring a switch statement with a case for each register.
 
 [NOTE]
 ====
-The name RISC-V indexterm:[RISC-V] was chosen to represent the fifth major RISC ISA design from UC Berkeley (RISC-I cite:[riscI-isca1981], RISC-II cite:[Katevenis:1983], SOAR cite:[Ungar:1984], and SPUR cite:[spur-jsscc1989] were the first four). We also pun on the use of the Roman numeral "V" to signify "variations" and "vectors", as support for a range of architecture research, including various data-parallel accelerators, is an explicit goal of the ISA design.
+_CSRs are accessed indirectly via this extension using select values, in
+contrast to being accessed directly using standard CSR numbers. A CSR
+accessible via one method may or may not be accessible via the other
+method. Select values are a separate address space from CSR numbers, and
+from tselect values in the Sdtrig extension. If a CSR is both directly
+and indirectly accessible, the CSR's select value is unrelated to its
+CSR number._
+
+_Further, Machine-level and Supervisor-level select values are separate
+address spaces from each other. Although Machine-level and
+Supervisor-level CSRs with the same select value may be defined by an
+extension as partial or full aliases with respect to each other. This
+typically would be done for CSRs that can be delegated from
+Machine-level to Supervisor-level._
 ====
 
-=== Sub Section of Introduction
-
-Pellentesque habitant morbi *tristique* senectus et netus et. Aliquam purus sit amet luctus. Odio eu ``feugiat`` pretium nibh ipsum consequat nisl vel. Euismod lacinia at quis risus sed vulputate odio ut. Eu sem integer vitae justo eget. Cursus euismod quis viverra nibh. Tempus egestas sed sed risus. Quis imperdiet massa tincidunt nunc pulvinar. Id venenatis a condimentum vitae sapien pellentesque habitant.
+The machine-level extension *Smcsrind* encompasses all added CSRs and
+all behavior modifications for a hart, over all privilege levels. For a
+supervisor-level environment, extension *Sscsrind* is essentially the
+same as Smcsrind except excluding the machine-level CSRs and behavior
+not directly visible to supervisor level.

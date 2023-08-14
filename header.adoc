@@ -1,11 +1,11 @@
-= RISC-V Example Specification Document (Zexmpl)
-Authors: Author 1, Author 2
-:docgroup: RISC-V Task Group
-:description: RISC-V Example Specification Document (Zexmpl)
+= RISC-V Indirect CSR Access (Smcsrind/Sscsrind)
+Authors: Beeman Strong, John Hauser
+:docgroup: RISC-V Privileged ISA IC
+:description: RISC-V Indirect CSR Access (Smcsrind/Sscsrind)
 :company: RISC-V.org
-:revdate: 1/2023
-:revnumber: 1.0
-:revremark: This document is under development. Expect potential changes. Visit http://riscv.org/spec-state for further details.
+:revdate: 8/2023
+:revnumber: 1.0.0-rc1
+:revremark: This document is in Stable state. Assume anything could still change, but limited change should be expected. Visit http://riscv.org/spec-state for further details.
 :revinfo:
 :url-riscv: http://riscv.org
 :doctype: book
@@ -39,11 +39,9 @@ endif::[]
 :xrefstyle: short
 
 [WARNING]
-.This document is in the link:http://riscv.org/spec-state[Development state]
+.This document is in the link:http://riscv.org/spec-state[Stable state]
 ====
-Expect potential changes. This draft specification is likely to evolve before
-it is accepted as a standard. Implementations based on this draft
-may not conform to the future standard.
+Assume anything could still change, but limited change should be expected.
 ====
 
 [preface]
@@ -59,7 +57,7 @@ Copyright 2022 by RISC-V International.
 include::contributors.adoc[]
 
 include::intro.adoc[]
-include::chapter2.adoc[]
+include::body.adoc[]
 
 // The index must precede the bibliography
 include::index.adoc[]
