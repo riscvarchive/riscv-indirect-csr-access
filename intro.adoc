@@ -17,6 +17,7 @@ requiring allocation of large chunks of the limited CSR address space.
 without requiring a switch statement with a case for each register.
 
 [NOTE]
+[%unbreakable]
 ====
 _CSRs are accessed indirectly via this extension using select values, in
 contrast to being accessed directly using standard CSR numbers. A CSR

@@ -14,6 +14,7 @@
 |===
 
 [NOTE]
+[%unbreakable]
 ====
 _The mireg* CSR numbers are not consecutive because miph is CSR number
 0x354._
@@ -42,6 +43,7 @@ is changed, the most-significant bit of miselect moves to the new
 position, retaining its value from before.
 
 [NOTE]
+[%unbreakable]
 ====
 _An implementation is not required to support any custom values for
 miselect._
@@ -52,6 +54,7 @@ value that is reserved, or is standard but not implemented, is
 UNSPECIFIED.
 
 [NOTE]
+[%unbreakable]
 ====
 _It is expected that implementations will typically raise an illegal
 instruction exception for such accesses, so that, for example, they can
@@ -66,6 +69,7 @@ combination of miselect and mireg__i__, is defined by the extension to
 which the miselect value is allocated.
 
 [NOTE]
+[%unbreakable]
 ====
 __Ordinarily, each mireg__i _will access register state, access
 read-only 0 state, or raise an illegal instruction exception._
@@ -98,6 +102,7 @@ minimum range. Only if such an extension is implemented will siselect be
 required to support larger values.
 
 [NOTE]
+[%unbreakable]
 ====
 _Requiring a range of 0–0xFFF for siselect, even though most or
 all of the space may be reserved or inaccessible, permits M-mode to
@@ -118,12 +123,14 @@ holds a value that is reserved, or is standard but not implemented at
 supervisor level, is UNSPECIFIED.
 
 [NOTE]
+[%unbreakable]
 ====
 _It is recommended that implementations raise an illegal instruction
 exception for such accesses, to facilitate possible emulation (by
 M-mode) of these accesses._
 ====
 [NOTE]
+[%unbreakable]
 ====
 _An extension is considered not to be implemented at supervisor level if
 machine level has disabled the extension for S-mode, such as by the
@@ -137,6 +144,7 @@ sireg__i__, is defined by the extension to which the siselect value is
 allocated.
 
 [NOTE]
+[%unbreakable]
 ====
 __Ordinarily, each sireg__i _will access register state, access
 read-only 0 state, or, unless executing in a virtual machine (covered in
@@ -181,6 +189,7 @@ minimum range. Only if such an extension is implemented will vsiselect
 be required to support larger values.
 
 [NOTE]
+[%unbreakable]
 ====
 _Requiring a range of 0–0xFFF for vsiselect, even though most or all of
 the space may be reserved or inaccessible, permits a hypervisor to
@@ -219,6 +228,7 @@ is reserved, or is standard but not implemented at HS level, is
 UNSPECIFIED.
 
 [NOTE]
+[%unbreakable]
 ====
 _It is recommended that implementations raise an illegal instruction
 exception for such accesses, to facilitate possible emulation (by M-mode
@@ -233,6 +243,7 @@ vsireg__i__, is defined by the extension to which the vsiselect value is
 allocated.
 
 [NOTE]
+[%unbreakable]
 ====
 __Ordinarily, each vsireg__i _will access register state, access
 read-only 0 state, or raise an exception (either an illegal instruction
