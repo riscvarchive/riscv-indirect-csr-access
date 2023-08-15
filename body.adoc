@@ -31,7 +31,7 @@ register.
 The miselect register implements at least enough bits to support all
 implemented miselect values (corresponding to the implemented extensions
 that utilize miselect/mireg* to indirectly access register state). The
-miselect register may be read-only zero If there are no extensions
+miselect register may be read-only zero if there are no extensions
 implemented that utilize it.
 
 Values of miselect with the most-significant bit set (bit XLEN - 1 = 1)
@@ -50,8 +50,7 @@ miselect._
 ====
 
 The behavior upon accessing mireg* from M-mode, while miselect holds a
-value that is reserved, or is standard but not implemented, is
-UNSPECIFIED.
+value that is not implemented, is UNSPECIFIED.
 
 [NOTE]
 [%unbreakable]
@@ -119,8 +118,7 @@ most-significant bit of siselect moves to the new position, retaining
 its value from before.
 
 The behavior upon accessing sireg* from M-mode or S-mode, while siselect
-holds a value that is reserved, or is standard but not implemented at
-supervisor level, is UNSPECIFIED.
+holds a value that is not implemented at supervisor level, is UNSPECIFIED.
 
 [NOTE]
 [%unbreakable]
@@ -222,10 +220,8 @@ A virtual instruction exception is raised for attempts from VS-mode or
 VU-mode to directly access vsiselect or vsireg*, or attempts from
 VU-mode to access siselect or sireg*.
 
-The behavior upon accessing vsireg* from M-mode or HS-mode, or accessing
-sireg* (really vsireg*) from VS-mode, while vsiselect holds a value that
-is reserved, or is standard but not implemented at HS level, is
-UNSPECIFIED.
+The behavior upon accessing vsireg* from M-mode or HS-mode, while vsiselect holds a value that is not implemented at HS level, is UNSPECIFIED.  Similarly, the behavior upon accessing sireg* (really vsireg*) from VS-mode, while vsiselect holds a value that is not implemented at VS level, is UNSPECIFIED.
+
 
 [NOTE]
 [%unbreakable]
