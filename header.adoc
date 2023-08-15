@@ -60,5 +60,5 @@ include::intro.adoc[]
 include::body.adoc[]
 
 // The index must precede the bibliography
-include::index.adoc[]
-include::bibliography.adoc[]
+//include::index.adoc[]
+//include::bibliography.adoc[]
