@@ -216,20 +216,17 @@ overridden by the requirements specified in the section below, which
 take precedence over this section when extension Smstateen is also
 implemented.
 
-A virtual instruction exception is raised for attempts from VS-mode or
-VU-mode to directly access vsiselect or vsireg*, or attempts from
-VU-mode to access siselect or sireg*.
-
-The behavior upon accessing vsireg* from M-mode or HS-mode, while vsiselect holds a value that is not implemented at HS level, is UNSPECIFIED.  Similarly, the behavior upon accessing sireg* (really vsireg*) from VS-mode, while vsiselect holds a value that is not implemented at VS level, is UNSPECIFIED.
-
+A virtual instruction exception is raised for attempts from VS-mode or VU-mode to directly access vsiselect or vsireg*, or attempts from VU-mode to access siselect or sireg*.
+ 
+The behavior upon accessing vsireg* from M-mode or HS-mode, or accessing sireg* (really vsireg*) from VS-mode, while vsiselect holds a value that is not implemented at HS level, is UNSPECIFIED.   
 
 [NOTE]
 [%unbreakable]
 ====
-_It is recommended that implementations raise an illegal instruction
-exception for such accesses, to facilitate possible emulation (by M-mode
-or HS-mode) of these accesses._
+_It is recommended that implementations raise an illegal instruction exception for such accesses, to facilitate possible emulation (by M-mode) of these accesses._
 ====
+
+The behavior upon accessing vsireg* from M-mode or HS-mode, while vsiselect holds a value that is not implemented at HS level, is UNSPECIFIED.  Similarly, the behavior upon accessing sireg* (really vsireg*) from VS-mode, while vsiselect holds a value that is not implemented at VS level, is UNSPECIFIED.
 
 Otherwise, while vsiselect holds a number in a standard-defined and
 implemented range, attempts to access vsireg* from a sufficiently
@@ -241,10 +238,7 @@ allocated.
 [NOTE]
 [%unbreakable]
 ====
-__Ordinarily, each vsireg__i _will access register state, access
-read-only 0 state, or raise an exception (either an illegal instruction
-exception or, for select accesses from VS-mode or VU-mode, a virtual
-instruction exception)._
+__Ordinarily, each vsireg__i _will access register state, access read-only 0 state, or raise an exception (either an illegal instruction exception or, for select accesses from VS-mode, a virtual instruction exception).  When vsiselect holds a value that is implemented at HS level but not at VS level, attempts to access sireg* (really vsireg*) from VS-mode will typically raise a virtual instruction exception._
 ====
 
 Like siselect and sireg*, the widths of vsiselect and vsireg* are always
