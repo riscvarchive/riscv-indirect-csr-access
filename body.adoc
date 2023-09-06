@@ -22,7 +22,7 @@ _The mireg* CSR numbers are not consecutive because miph is CSR number
 
 The CSRs listed in the table above provide a window for accessing
 register state indirectly. The value of miselect determines which
-registers are currently accessible through the machine indirect alias
+register is accessed upon read or write of each of the machine indirect alias
 CSRs (mireg*). miselect value ranges are allocated to dependent
 extensions, which specify the register state accessible via each
 mireg__i__ register, for each miselect value. miselect is a WARL
@@ -73,10 +73,7 @@ which the miselect value is allocated.
 __Ordinarily, each mireg__i _will access register state, access
 read-only 0 state, or raise an illegal instruction exception._
 
-_For RV32, if an extension defines an indirectly accessed register as 64
-bits wide, it is recommended that the lower 32 bits of the register are
-accessed through one of mireg, mireg2, or mireg3, while the upper 32
-bits are accessed through mireg4, mireg5, or mireg6, respectively._
+_For RV32, if an extension defines an indirectly accessed register as 64 bits wide, it is recommended that the lower 32 bits of the register are accessed through one of mireg, mireg2, or mireg3, while the upper 32 bits are accessed through mireg4, mireg5, or mireg6, respectively._
 ====
 
 == Supervisor-level CSRs
