@@ -223,8 +223,6 @@ The behavior upon accessing vsireg* from M-mode or HS-mode, or accessing sireg* 
 _It is recommended that implementations raise an illegal instruction exception for such accesses, to facilitate possible emulation (by M-mode) of these accesses._
 ====
 
-The behavior upon accessing vsireg* from M-mode or HS-mode, while vsiselect holds a value that is not implemented at HS level, is UNSPECIFIED.  Similarly, the behavior upon accessing sireg* (really vsireg*) from VS-mode, while vsiselect holds a value that is not implemented at VS level, is UNSPECIFIED.
-
 Otherwise, while vsiselect holds a number in a standard-defined and
 implemented range, attempts to access vsireg* from a sufficiently
 privileged mode, or to access sireg* (really vsireg*) from VS-mode,
