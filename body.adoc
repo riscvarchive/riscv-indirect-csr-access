@@ -75,6 +75,12 @@ read-only 0 state, or raise an illegal instruction exception._
 
 _For RV32, if an extension defines an indirectly accessed register as 64 bits wide, it is recommended that the lower 32 bits of the register are accessed through one of mireg, mireg2, or mireg3, while the upper 32 bits are accessed through mireg4, mireg5, or mireg6, respectively._
 ====
+[NOTE]
+[%unbreakable]
+====
+_Six \*ireg* registers are defined in order to ensure that the needs of extensions in development are covered, with some room for growth.  For example, for an siselect value associated with counter X, sireg/sireg2 could be used to access mhpmcounterX/mhpmeventX, while sireg4/sireg5 could access mhpmcounterXh/mhpmeventXh. Six \*ireg* registers allows for accessing up to 3 CSR arrays per index (*iselect) with RV32-only CSRs, or up to 6 CSR arrays per index value without RV32-only CSRs._
+====
+
 
 == Supervisor-level CSRs
 
