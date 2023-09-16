@@ -239,7 +239,7 @@ allocated.
 [NOTE]
 [%unbreakable]
 ====
-__Ordinarily, each vsireg__i _will access register state, access read-only 0 state, or raise an exception (either an illegal instruction exception or, for select accesses from VS-mode, a virtual instruction exception).  When vsiselect holds a value that is implemented at HS level but not at VS level, attempts to access sireg* (really vsireg*) from VS-mode will typically raise a virtual instruction exception._
+__Ordinarily, each vsireg__i _will access register state, access read-only 0 state, or raise an exception (either an illegal instruction exception or, for select accesses from VS-mode, a virtual instruction exception).  When vsiselect holds a value that is implemented at HS level but not at VS level, attempts to access sireg* (really vsireg*) from VS-mode will typically raise a virtual instruction exception.  But there may be cases specific to an extension where different behavior is more appropriate._
 ====
 
 Like siselect and sireg*, the widths of vsiselect and vsireg* are always
@@ -269,7 +269,7 @@ VU-mode to directly access vsiselect or vsireg*, and for all attempts
 from VU-mode to access siselect or sireg*.
 
 If the hypervisor extension is implemented, the same bit is defined also
-in hypervisor CSR hstateen0, but concerns only siselect and sireg*
+in hypervisor CSR hstateen0, but controls access to only siselect and sireg*
 (really vsiselect and vsireg*), which is the state potentially
 accessible to a virtual machine executing in VS or VU-mode. When
 hstateen0[60]=0 and mstateen0[60]=1, all attempts from VS or VU-mode to
@@ -281,3 +281,8 @@ Extension Ssstateen is defined as the supervisor-level view of
 Smstateen. Therefore, the combination of Sscsrind and Ssstateen
 incorporates the bit defined above for hstateen0 but not that for
 mstateen0, since machine-level CSRs are not visible to supervisor level.
+
+[NOTE]
+====
+_CSR address space is reserved for a possible future "Sucsrind" extension that extends indirect CSR access to user mode._
+====
