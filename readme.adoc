@@ -1,3 +1,8 @@
+[NOTE]
+====
+This specification has been merged into the Unprivileged Specification.  Please log issues against against the link:https://github.com/riscv/riscv-isa-manual[riscv-isa-manual] repository going forward.
+====
+
 = RISC-V Indirect CSR Access Extension Specification
 
 This repository holds the specification for the RISC-V Indirect CSR Access (Smcsrind/Sscsrind) Extension.
